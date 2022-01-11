@@ -35,14 +35,14 @@ body{
 .gamescore-container{
     display: grid;
     grid-template-columns:245px 245px;
-    grid-template-rows:100px 100px;
+    grid-template-rows:50px 50px;
     background-color: rgb(36, 36, 36);
     text-align: center;
     grid-gap:10px;
     padding:10px;
     margin: 0px auto;
     width: 500px;
-
+    color: white;
     
 }
 
@@ -53,5 +53,7 @@ body{
     /* position:relative; */
     display: block;
     float: center;
+   
+    
 
 }
