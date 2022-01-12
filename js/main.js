@@ -4,42 +4,55 @@ $(document).ready(function(){
    
     let playerTurn = 0;
     let remainingTurns =9;
-    const arrayPlayer1 = []; // cellId clicked will saved into this array
-    const arrayPlayer2 = []; // cellId clicked will saved into this array
-   
-    $('.cell').one('click',function(){
+    let arrayPlayer1 = []; // cellId clicked will saved into this array
+    let arrayPlayer2 = []; // cellId clicked will saved into this array
+    let gameOver = false;
+
+    const playGame = $('.cell').on('click',function(){
 
         const cellId = parseInt($(this).attr("id"));// get the id num of the 
-        
-       if(playerTurn === 0 ){
-            const checkWin =checkWinningConditions(arrayPlayer1)
-            $(this).html("O");
-            $(this).css('color','rgb(5, 128, 128)');
-            arrayPlayer1.push(cellId);// adds and stores the index cell into the player's array
-            checkWinningConditions(arrayPlayer1);// first checks winning index
-            playerTurn = 1; // then alternate to Player 2
-            remainingTurns--;
-            if(remainingTurns === 0  && checkWin ===false){
-                console.log(`Its a draw! Start Again`);
-                window.alert(`Its a draw! Start Again`)
+        // if statement check if the clicked cell is already occupied
+        if(gameOver === false){// If game is not over , keep playing. Once its over, stop all clicks
+
+            if($(this).html() !== ""){//if cell is not empty, no click will be applied
+                console.log(`already clicked`);
+                console.log(`GameOver`);
+                return;
             }
-        }else{
-            const checkWin =checkWinningConditions(arrayPlayer2)
-            $(this).html("X");
-            $(this).css('color','rgb(5, 128, 128)');
-            arrayPlayer2.push(cellId);
-            checkWinningConditions(arrayPlayer2);
-            playerTurn = 0; // switch back to Player 1
-            remainingTurns--;
-            if(remainingTurns === 0  && !checkWin){
-                console.log(`Its a draw! Start Again`);
-                window.alert(`Its a draw! Start Again`)
+
+            if(playerTurn === 0 ){
+                const checkWinPlayer1 =checkWinningConditions(arrayPlayer1)
+                console.log(`checkwin for player 1`,checkWinPlayer1);
+                $(this).html("O");
+                $(this).css('color','rgb(5, 128, 128)');
+                arrayPlayer1.push(cellId);// adds and stores the index cell into the player's array
+                remainingTurns--;
+                checkWinningConditions(arrayPlayer1);// first checks winning index
+                playerTurn = 1; // then alternate to Player 2
+                if(remainingTurns === 0 && !checkWinPlayer1){
+                    console.log(`checkwin for player 1`,!checkWinPlayer1);
+                    console.log(`Its a draw! Start Again`);
+                    window.alert(`Its a draw! Start Again`)
+                }
+                
+            }else{
+                const checkWinPlayer2 =checkWinningConditions(arrayPlayer2)
+                console.log(`checkwin for player 2`,checkWinPlayer2);
+                $(this).html("X");
+                $(this).css('color','rgb(5, 128, 128)');
+                arrayPlayer2.push(cellId);
+                remainingTurns--;
+                checkWinningConditions(arrayPlayer2);
+                playerTurn = 0; // switch back to Player 1
+                
+                if(remainingTurns === 0  && !checkWinPlayer2){
+                    console.log(`checkwin for player 1`,!checkWinPlayer2);
+                    console.log(`Its a draw! Start Again`);
+                    window.alert(`Its a draw! Start Again`)
+                }
             }
+            console.log(`Remaining turns left:`,remainingTurns);
         }
-        console.log(`Remaining turns left:`,remainingTurns);
-        // if(remainingTurns === 0 && winningConditions() === false){
-        //     console.log(`Game Over! Start Again`)
-        // }
     });//
 
     const winningConditions = [
@@ -69,36 +82,42 @@ $(document).ready(function(){
                 
             }
             if(includeCounter === 3){//counter if the players have 3 winning indexes included to return true
-                console.log(`You've won the game!`);
                 
                 if(playerTurn === 0){
                     const score = parseInt($(`#player1`).text());
                     const newScore = $(`#player1`).text(score+1);
+                    window.alert(`Player 1 Won! Congrats!`)
+                    
                 } else if(playerTurn === 1){
                     const score = parseInt($(`#player2`).text());
                     const newScore = $(`#player2`).text(score+1);
+                    window.alert(`Player 2 Won! Congrats!`)
+                    
                 } // logs the score for the winning player
+                gameOver = true;
+                console.log(`You've won the game! Game Over:`,gameOver);
                 return true;
             } //If() counter for 3 winning index
-            
             
         } // outerForLoop WinningConditions
         return false;
 
     };// checkWinningConditions()
-    // const gameOver = function(){
 
-    //     if(winningConditions)
-    // }
+    const resetGame = $("#resetGame").on('click',function(){
+        playerTurn = 0;
+        remainingTurns =9;
+        let emptyCell = $(".cell").html("");
+        arrayPlayer1 = [];
+        arrayPlayer2 = [];
+        gameOver=false;
+        console.log(`Reset button clicked`);
+        console.log("empty cell",emptyCell);
+        console.log(playerTurn)
+        
+    });// resetGame()
 
-    // const endGame = function (){
-
-
-    // }
-
-
-
-
+    
 
 });//$document.ready()
 
