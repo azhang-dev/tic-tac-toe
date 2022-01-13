@@ -9,8 +9,6 @@
 	
 		<title>Tic-Tac-Toe</title>
 
-        <link href="http://fonts.cdnfonts.com/css/archway" rel="stylesheet">
-       
 		<link rel="stylesheet" href="css/style.css">
 		<script src="js/jquery.js"></script>
   		<script src="js/main.js"></script>
@@ -20,91 +18,89 @@
 
 <body>
 
-<audio controls autoplay loop>
-  
-  <source src="css/mp3/01 - Super Mario Bros.mp3" type="audio/mpeg">
+    <audio controls autoplay loop>
+        
+        <source src="css/mp3/01 - Super Mario Bros.mp3" type="audio/mpeg">
 
-</audio>
+    </audio>
 
+    <div class=backgroundGallery>
 
+        <video autoplay muted loop id="liveBackground">
+        <source src="css/images/Super-Mario/Background/Super-Mario-Live-Wallpaper.mp4" class=backgroundImg style="display:none" type="video/mp4">
+        </video>
+    
+        <img src="css/images/Super-Mario/Background/Background_7.jpg" class=backgroundImg style="display:none" alt="Mario background 1">
 
-
-
-<div class=backgroundGallery>
-
-    <video autoplay muted loop id="liveBackground">
-     <source src="css/images/Super-Mario/Background/Super-Mario-Live-Wallpaper.mp4" class=backgroundImg style="display:none" type="video/mp4">
-    </video>
-  
-    <img src="css/images/Super-Mario/Background/Background_7.jpg" class=backgroundImg style="display:none" alt="Mario background 1">
-
-</div>
-
-
-
-<div class="content">
-
-    <header>
-        <span class="title" style="color:#FF0000">T</span>
-        <span class="title" style="color:#66CC66">I</span>
-        <span class="title" style="color:#FF9966">C</span>
-        <span class="title" style="color:#FFCCCC">-</span>
-        <span class="title" style="color:#FF0066">T</span>
-        <span class="title" style="color:#66CC66">A</span>
-        <span class="title" style="color:#FF9966">C</span>
-        <span class="title" style="color:#FFCCCC">-</span>
-        <span class="title" style="color:#FF0066">T</span>
-        <span class="title" style="color:#66CC66">O</span>
-        <span class="title" style="color:#FF9966">E</span>
-    </header>
-
-    <div class= "game-container"> 
-        <div class= "cell" id= "0"></div>
-        <div class= "cell" id= "1"></div>
-        <div class= "cell" id= "2"></div>
-        <div class= "cell" id= "3"></div>
-        <div class= "cell" id= "4"></div>
-        <div class= "cell" id= "5"></div>
-        <div class= "cell" id= "6"></div>
-        <div class= "cell" id= "7"></div>
-        <div class= "cell" id= "8"></div>
     </div>
 
-    <h2 class="characterSelectionText">Player 1: Choose your character </h2>
-    <img src="css/images/Super-Mario/Character-selection/mario.png" class="playerSelection" id="character1" alt="player selection" >
-    <img src="css/images/Super-Mario/Character-selection/luigi.png" class= "playerSelection" id="character2" alt="player selection">
-    <img src="css/images/Super-Mario/Character-selection/peach.png" class="playerSelection" id="character3" alt="player selection">
-    <img src="css/images/Super-Mario/Character-selection/wario.png" class= "playerSelection" id="character4" alt="player selection">
 
 
+    <div class="content">
 
-    <h2>Player's score</h2>
-    <div class= "gamescore-container">
-        <p class="player">Player 1</p>
-        <div  class= "score" id="player1">0</div>
-        <p class="player">Player 2</p>
-        <div  class= "score" id="player2">0</div>
-    </div>
-    <br>
-    <button class="resetBoard">Reset Board</button>
-    <button id="resetScore">Reset Score</button>
-    <button id="toggleBackground">Background</button>
+        <header>
+            <span class="title" style="color:#FF0066">T</span>
+            <span class="title" style="color:#66CC66">I</span>
+            <span class="title" style="color:#FF9966">C</span>
+            <span class="title" style="color:#FFCCCC">-</span>
+            <span class="title" style="color:#FF0066">T</span>
+            <span class="title" style="color:#66CC66">A</span>
+            <span class="title" style="color:#FF9966">C</span>
+            <span class="title" style="color:#FFCCCC">-</span>
+            <span class="title" style="color:#FF0066">T</span>
+            <span class="title" style="color:#66CC66">O</span>
+            <span class="title" style="color:#FF9966">E</span>
+        </header>
 
-    <div class="popupDraw">
-        <div class= "popup"> 
-            <p class ="popupMessage">Its a draw <br> Let's restart the board</p>
-            <button class="resetBoard">Reset Board</button>
+        <div class= "game-container"> 
+            <div class= "cell" id= "0"></div>
+            <div class= "cell" id= "1"></div>
+            <div class= "cell" id= "2"></div>
+            <div class= "cell" id= "3"></div>
+            <div class= "cell" id= "4"></div>
+            <div class= "cell" id= "5"></div>
+            <div class= "cell" id= "6"></div>
+            <div class= "cell" id= "7"></div>
+            <div class= "cell" id= "8"></div>
         </div>
-    </div>
+
+        <h2 class="characterSelectionText">Player 1: Choose your character </h2>
+        <img src="css/images/Super-Mario/Character-selection/mario.png" class="playerSelection" id="character1" alt="player selection" >
+        <img src="css/images/Super-Mario/Character-selection/luigi.png" class= "playerSelection" id="character2" alt="player selection">
+        <img src="css/images/Super-Mario/Character-selection/peach.png" class="playerSelection" id="character3" alt="player selection">
+        <img src="css/images/Super-Mario/Character-selection/wario.png" class= "playerSelection" id="character4" alt="player selection">
 
 
-    <div class="popupWin">
-        <div class= "popup"> 
-            <p class ="popupMessage" id="messageWin"></p>
-            <button class="resetBoard">Reset Board</button> 
+
+        <h2>Player's score</h2>
+        <div class= "gamescore-container">
+            <p class="player">Player 1</p>
+            <div  class= "score" id="player1">0</div>
+            <p class="player">Player 2</p>
+            <div  class= "score" id="player2">0</div>
         </div>
+        <br>
+        <button class="resetBoard">Reset Board</button>
+        <button id="resetScore">Reset Score</button>
+        <button id="toggleBackground">Background</button>
+
+        <div class="popupDraw">
+            <div class= "popup"> 
+                <p class ="popupMessage">Its a draw <br> Let's restart the board</p>
+                <button class="resetBoard">Reset Board</button>
+            </div>
+        </div>
+
+
+        <div class="popupWin">
+            <div class= "popup"> 
+                <p class ="popupMessage" id="messageWin"></p>
+                <button class="resetBoard">Reset Board</button> 
+            </div>
+        </div>
+
+    
+    
     </div>
-   
-</div>
 </body>
 </html>
