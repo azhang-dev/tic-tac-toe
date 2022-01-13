@@ -50,7 +50,7 @@ $(document).ready(function(){
             };
 
             if(playerTurn === 0 ){
-                $selectionText.html("Player 1: Make your Move");// removing the text: "Let the game begin" 
+                $selectionText.html("");// removing the text: "Let the game begin" 
 
                 const checkWinPlayer1 =checkWinningConditions(arrayPlayer1)
                 arrayPlayer1.push(cellId);// adds and stores the index cell into the player's array
@@ -64,9 +64,8 @@ $(document).ready(function(){
                     "background-color":"rgb(255,113,111)",
                     "pointer-event":"none",
                 });
-                
+
                 playerTurn = 1; // then alternate to Player 2
-                $selectionText.html("Player 2: Make your Move")
 
                 if(remainingTurns === 0 && !checkWinPlayer1){
                     $(".popupDraw").css("display","flex");
@@ -85,7 +84,7 @@ $(document).ready(function(){
                     "background-color":"rgb(254, 240, 113)",
                 });
                 playerTurn = 0; // switch back to Player 1
-                $selectionText.html("Player 1: Make your Move");
+                
                 if(remainingTurns === 0  && !checkWinPlayer2){
                     // window.alert(`Its a draw !  Start Again`)
                     $(".popupDraw").css("display","flex");

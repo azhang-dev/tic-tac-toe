@@ -2,7 +2,7 @@
 
 ![](screenshots/Screen Shot_1.png)
 
-A **cat** themed Tic Tac Toe. 
+A **SuperMario** themed Tic Tac Toe. 
 [This is a link to my live site](https://azhang93.github.io/tic-tac-toe/?fbclid=IwAR019QX2QN2GVKgiOYhSLdG00LA_Fz00SV6KxQ0LXjlYZK5NDEu1lOFGedo)
 
 **HOW TO PLAY**
@@ -20,11 +20,9 @@ Tech used in this project:
 
 Wishlist:
 - cell's color change according to different character selection
-- add background music
 - AI player option
 - Custom Grid options
 - option to toggle through another themed TIC-TAC-TOE
-(example: Super Mario theme)
 
 List of bugs:
 - May encounter a draw message after win message of a diagonal win: on a last remaining corner cell of the grid.

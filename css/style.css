@@ -9,6 +9,15 @@ body{
 
 }
 
+
+#liveBackground {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    z-index: -1;
+}
 .backgroundImg{
     background-position: center;
     background-size: cover;
@@ -22,10 +31,9 @@ body{
     resize: both;
 }
 
-header{
-    font-size: 60px;
-    margin: 70px 0px 5px 0px;
-    /* color:rgb(0, 248, 227); */
+h1{
+    font-size: 100px;
+    margin: 20px 0px 5px 0px;
     -moz-text-fill-color: rgb(0, 248, 227);
     -webkit-text-fill-color: rgb(0, 248, 227);
     -moz-text-stroke-color: black;
@@ -102,12 +110,30 @@ header{
 }
 
 .playerSelection{
-
     height:150px;
     width:auto;
-
+    margin:5px;
+    
 }
 
+.playerSelection:hover{
+    animation-name: jump;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    cursor:pointer;
+}
+
+@keyframes jump {
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-20px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
 
 .popupDraw{
 
@@ -166,14 +192,16 @@ button{
     text-decoration: none;
     transition: 0.4s;
     
-    
 }
 
 button:hover{
     background-color:rgb(240, 175, 13);
     color:rgb(36, 36, 36);
-  
+    animation-name: scale;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
 }
+
 
 .resetBoardButton{
     font-family: 'New Super Mario Font U', sans-serif;
@@ -187,25 +215,37 @@ button:hover{
     box-shadow: 6px 6px 29px -4px rgb(0, 0, 0, 0.75);
     margin-top: 50px;
     text-decoration: none;
-    transition: 0.4s;
+    transition: 0.5s;
     vertical-align:middle;
 }
 
 .resetBoardButton:hover{
     background-color:rgb(240, 175, 13);
     color:rgb(36, 36, 36);
-  
+    animation-name: scale;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
 }
 
+@keyframes scale {
+    0%{
+        transform:scale(100%);
+    }
+    50%{
+        transform:scale(70%);
+    }
+    100%{
+        transform:scale(100%);
+    }
+}
 
 
 @media only screen and (max-width:800px){
 
-    header{
+    h1{
         
-        font-size: 40px;
+        font-size: 60px;
         margin: 20px 0px 5px 0px;
-        /* color:rgb(0, 248, 227); */
         -moz-text-fill-color: rgb(0, 248, 227);
         -webkit-text-fill-color: rgb(0, 248, 227);
         -moz-text-stroke-color: black;
@@ -217,8 +257,7 @@ button:hover{
     .backgroundImg{
         background-position: center;
         background-size: cover;
-        background-repeat: repeat-x;
-        width:100%;
+        width:100vw;
         height: 100%;
         position:fixed;
         top:0;
@@ -253,6 +292,7 @@ button:hover{
         text-transform:uppercase;
     }
 
+    
     .gamescore-container{
         border-radius: 10px;
         grid-template-columns:245px 245px;
@@ -265,6 +305,17 @@ button:hover{
     .gamescore-container > div{
         border-radius: 5px;
         width:100px;
+    }
+    .score{
+    position: relative;
+    font-size: 20px;
+    text-align: center;
+    line-height:25px ;
+    }
+
+    p.player{
+        display:grid;
+        line-height: 1px;
     }
 
     .popup{
