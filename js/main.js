@@ -40,6 +40,7 @@ $(document).ready(function(){
                 console.log(`checkwin for player 2`,checkWinPlayer2);
                 $(this).html("X");
                 $(this).css('color','rgb(5, 128, 128)');
+                $(this).css('background-color','red')// change cell color
                 arrayPlayer2.push(cellId);
                 remainingTurns--;
                 checkWinningConditions(arrayPlayer2);
@@ -86,6 +87,7 @@ $(document).ready(function(){
                 if(playerTurn === 0){
                     const score = parseInt($(`#player1`).text());
                     const newScore = $(`#player1`).text(score+1);
+
                     window.alert(`Player 1 Won! Congrats!`)
                     
                 } else if(playerTurn === 1){
@@ -108,12 +110,11 @@ $(document).ready(function(){
         playerTurn = 0;
         remainingTurns =9;
         let emptyCell = $(".cell").html("");
+        emptyCell.css('background-color','rgb(11, 209, 209)');
         arrayPlayer1 = [];
         arrayPlayer2 = [];
         gameOver=false;
         console.log(`Reset button clicked`);
-        console.log("empty cell",emptyCell);
-        console.log(playerTurn)
         
     });// resetGame()
 
