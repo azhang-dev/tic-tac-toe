@@ -21,16 +21,16 @@ $(document).ready(function(){
         if(characterSelectionCount === 0){
             player1Character = playerCharacter;// saves the character selected
             characterSelectionCount ++;// will change to Player 2
-            $(this).css({
+            $(this).css({// character selected is no longer clickable
                 "pointer-events":"none",
                 "opacity":0.5,
             });
-            $selectionText.html("Player 2: Choose your character!");
+            $selectionText.html("Player 2: Choose your character !");
 
         }else{
             player2Character = playerCharacter;
             $(".playerSelection").css("display","none");//hides the selection of characters, so players can no longer choose
-            $selectionText.html("LET THE GAMES BEGIN!!");
+            $selectionText.html("LET THE GAMES BEGIN !!");
             gameOver = false; // now allows the game to start (cell clicking)
         }
 
@@ -50,24 +50,25 @@ $(document).ready(function(){
             };
 
             if(playerTurn === 0 ){
-                $selectionText.html("");// removing the text: "Let the game begin" 
+                $selectionText.html("Player 1: Make your Move");// removing the text: "Let the game begin" 
 
                 const checkWinPlayer1 =checkWinningConditions(arrayPlayer1)
                 arrayPlayer1.push(cellId);// adds and stores the index cell into the player's array
                 remainingTurns--;
                 checkWinningConditions(arrayPlayer1);// first checks winning index
-
+                
                 $(this).html(" ");// used for if() above, so cells cannot be reclicked
                 $(this).css({// changes cell's CSS
                     "background":`url(${player1Character})`,
-                    "background-size":"contain",
-                    "background-color":"blue",
+                    "background-size":"cover",
+                    "background-color":"rgb(255,113,111)",
                     "pointer-event":"none",
                 });
+                
                 playerTurn = 1; // then alternate to Player 2
+                $selectionText.html("Player 2: Make your Move")
 
                 if(remainingTurns === 0 && !checkWinPlayer1){
-                    // window.alert(`Its a draw! Start Again`)
                     $(".popupDraw").css("display","flex");
                 }
                 
@@ -81,13 +82,12 @@ $(document).ready(function(){
                 $(this).css({// changes cell's CSS
                     "background":`url(${player2Character})`,
                     "background-size":"cover",
-                    "background-color":"red",
-                    "color":"rgb(5, 128, 128)",
+                    "background-color":"rgb(254, 240, 113)",
                 });
                 playerTurn = 0; // switch back to Player 1
-                
+                $selectionText.html("Player 1: Make your Move");
                 if(remainingTurns === 0  && !checkWinPlayer2){
-                    // window.alert(`Its a draw! Start Again`)
+                    // window.alert(`Its a draw !  Start Again`)
                     $(".popupDraw").css("display","flex");
                 }
             }
@@ -125,18 +125,15 @@ $(document).ready(function(){
                 if(playerTurn === 0){
                     const score = parseInt($(`#player1`).text());
                     const newScore = $(`#player1`).text(score+1);
-                    $("#messageWin").html("CONGRATS! PLAYER 1 WON!");
-                    $(".popupWin").css("display","flex");
-                    // window.alert(`Player 1 Won! Congrats!`)
+                    $("#messageWin").html("PLAYER 1 WINS");
+                    $(".popupWin").css("display","flex");  
                     
                 } else if(playerTurn === 1){
                     const score = parseInt($(`#player2`).text());
                     const newScore = $(`#player2`).text(score+1);
-                    $("#messageWin").html("CONGRATS! PLAYER 2 WON!");
-                    $(".popupWin").css("display","flex");
-                    // window.alert(`Player 2 Won! Congrats!`);
-                    
-                } // logs the score for the winning player
+                    $("#messageWin").html("PLAYER 2 WINS");
+                    $(".popupWin").css("display","flex"); 
+                }
                 gameOver = true;
                 return true;
             } //If() counter for 3 winning index
@@ -159,7 +156,7 @@ $(document).ready(function(){
             "background-color":"rgb(11, 209, 209)",
         });
         $(".popupWin").css("display","none");
-
+        $(".popupDraw").css("display","none");
         
     });// resetGame()
 
@@ -191,7 +188,10 @@ $(document).ready(function(){
 
     });//resetScore()
 
-   
+    $(`#toggleBackground`).click(function(){
+        $(".backgroundImg").toggle();
+        console.log(`background button clicked`);
+    });// #togglebackground
 
 
 
