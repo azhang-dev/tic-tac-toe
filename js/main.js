@@ -2,104 +2,95 @@ $(document).ready(function(){
    
     console.log(`DOM loaded!`);
    
+    let gameOver = true;
     let playerTurn = 0;
     let remainingTurns = 9;
     let arrayPlayer1 = []; // cellId clicked will saved into this array
     let arrayPlayer2 = []; // cellId clicked will saved into this array
-    let gameOver = true;
-    let player1Character = "";
-    let player2Character = "";
 
+    let player1Character = ""; //stores player1's choice of characters
+    let player2Character = "";//stores player2's choice of characters
+    let characterSelectionCount = 0;// will affect players turn to select 
 
-    const $playerSelection = $(".playerSelection").html("id");
-    console.log(`player selection:`,$playerSelection);
-    const selectionText = $('.characterSelectionText');
-    let characterSelectionCount = 0;
-    console.log(`selection text:`,selectionText.html());
+    const $selectionText = $('.characterSelectionText'); // this text will change during selection of characters
+    
 
-    $playerSelection.on("click",function(){
+    const $playerSelection= $(".playerSelection").on("click",function(){
+        const playerCharacter = $(this).attr("src"); // directly acessing the img content
         
-        // const playerCharacter = $(this).attr("id");
-        const playerCharacter = $(this).attr("src");
-        console.log(`player:`,playerCharacter);
-
         if(characterSelectionCount === 0){
-            player1Character = playerCharacter;
-            characterSelectionCount ++
-            selectionText.html("Player 2: Choose your character!");
-            // if(playerCharacter === $(this).attr("#character1")){
-            //     $(this).css('background-color','red');
-            // } 
+            player1Character = playerCharacter;// saves the character selected
+            characterSelectionCount ++;// will change to Player 2
+            $(this).css({
+                "pointer-events":"none",
+                "opacity":0.5,
+            });
+            $selectionText.html("Player 2: Choose your character!");
 
         }else{
             player2Character = playerCharacter;
-            $(".playerSelection").css("display","none");
-            selectionText.html("LET THE GAMES BEGIN!!");
-            gameOver = false;
-            //hide selection button or non clickable
+            $(".playerSelection").css("display","none");//hides the selection of characters, so players can no longer choose
+            $selectionText.html("LET THE GAMES BEGIN!!");
+            gameOver = false; // now allows the game to start (cell clicking)
         }
 
+    });//$playerSelection
+
+    const $playGame = $('.cell').on('click',function(){
         
-
-    });//$playerSelection.on click --> will probably have to wrap the entire game?(resets)
-
-    
-  
-
-    const playGame = $('.cell').on('click',function(){
-
         const cellId = parseInt($(this).attr("id"));// get the id num of the 
         // if statement check if the clicked cell is already occupied
         if(gameOver === false){// If game is not over , keep playing. Once its over, stop all clicks
+
 
             if($(this).html() !== ""){//if cell is not empty, no click will be applied
                 console.log(`already clicked`);
                 console.log(`GameOver`);
                 return;
-            }
+            };
 
             if(playerTurn === 0 ){
-                //input characterSelection
-                const checkWinPlayer1 =checkWinningConditions(arrayPlayer1)
-                console.log(`checkwin for player 1`,checkWinPlayer1);
-                //$(this).html(player1Character);
-                $(this).css("background",`url(${player1Character})`);
-                $(this).css("background-size","contain");
+                $selectionText.html("");// removing the text: "Let the game begin" 
 
-                $(this).css('color','rgb(5, 128, 128)');
-                
+                const checkWinPlayer1 =checkWinningConditions(arrayPlayer1)
                 arrayPlayer1.push(cellId);// adds and stores the index cell into the player's array
                 remainingTurns--;
                 checkWinningConditions(arrayPlayer1);// first checks winning index
+
+                $(this).html(" ");// used for if() above, so cells cannot be reclicked
+                $(this).css({// changes cell's CSS
+                    "background":`url(${player1Character})`,
+                    "background-size":"contain",
+                    "background-color":"blue",
+                    "pointer-event":"none",
+                });
                 playerTurn = 1; // then alternate to Player 2
+
                 if(remainingTurns === 0 && !checkWinPlayer1){
-                    console.log(`checkwin for player 1`,!checkWinPlayer1);
-                    console.log(`Its a draw! Start Again`);
                     window.alert(`Its a draw! Start Again`)
                 }
                 
             }else{
-                const checkWinPlayer2 =checkWinningConditions(arrayPlayer2)
-                console.log(`checkwin for player 2`,checkWinPlayer2);
-                // $(this).html(player2Character);//-->if attr.("id")
-                $(this).css("background",`url(${player2Character})`);
-                $(this).css("background-size","contain");
-                $(this).css('color','rgb(5, 128, 128)');
-                $(this).css('background-color','red')// change cell color
+                const checkWinPlayer2 =checkWinningConditions(arrayPlayer2);
                 arrayPlayer2.push(cellId);
                 remainingTurns--;
                 checkWinningConditions(arrayPlayer2);
+                
+                $(this).html(" ");
+                $(this).css({// changes cell's CSS
+                    "background":`url(${player2Character})`,
+                    "background-size":"cover",
+                    "background-color":"red",
+                    "color":"rgb(5, 128, 128)",
+                });
                 playerTurn = 0; // switch back to Player 1
                 
                 if(remainingTurns === 0  && !checkWinPlayer2){
-                    console.log(`checkwin for player 1`,!checkWinPlayer2);
-                    console.log(`Its a draw! Start Again`);
                     window.alert(`Its a draw! Start Again`)
                 }
             }
-            console.log(`Remaining turns left:`,remainingTurns);
         }
-    });//
+    });//$playGame()
 
     const winningConditions = [
         [0,1,2],
@@ -142,7 +133,6 @@ $(document).ready(function(){
                     
                 } // logs the score for the winning player
                 gameOver = true;
-                console.log(`You've won the game! Game Over:`,gameOver);
                 return true;
             } //If() counter for 3 winning index
             
@@ -154,12 +144,13 @@ $(document).ready(function(){
     const resetBoard = $("#resetBoard").on('click',function(){
         playerTurn = 0;
         remainingTurns =9;
-        $(".cell").css({"background":"none"});
-        $(".cell").css("background-color","rgb(11, 209, 209)");
         arrayPlayer1 = [];
         arrayPlayer2 = [];
-        gameOver=true;
-        console.log(`Reset button clicked`);
+        gameOver=false;
+        $(".cell").css({
+            "background":"none",
+            "background-color":"rgb(11, 209, 209)",
+        });
         
     });// resetGame()
 
@@ -168,18 +159,25 @@ $(document).ready(function(){
         gameOver=true;
         playerTurn = 0;
         remainingTurns =9;
-        $(".cell").css({"background":"none"});
-        $(".cell").css("background-color","rgb(11, 209, 209)");
-        // $(".cell").css("background","none");
         arrayPlayer1 = [];
         arrayPlayer2 = [];
+
         characterSelectionCount = 0;
         player1Character = "";
         player2Character = "";
-        $(".playerSelection").css("display","inline");
-        selectionText.html("Player 1: Choose your character");
-
-        
+        $selectionText.html("Player 1: Choose your character");
+        $(".cell").html("");
+        $(".cell").css({
+            "background":"none",
+            "background-color":"rgb(11, 209, 209)",
+            
+        });
+      
+        $(".playerSelection").css({
+            "display":"inline",
+            "pointer-events":"auto",
+            "opacity":1
+        });
 
     });//resetScore()
 
