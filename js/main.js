@@ -67,7 +67,8 @@ $(document).ready(function(){
                 playerTurn = 1; // then alternate to Player 2
 
                 if(remainingTurns === 0 && !checkWinPlayer1){
-                    window.alert(`Its a draw! Start Again`)
+                    // window.alert(`Its a draw! Start Again`)
+                    $(".popupDraw").css("display","flex");
                 }
                 
             }else{
@@ -86,7 +87,8 @@ $(document).ready(function(){
                 playerTurn = 0; // switch back to Player 1
                 
                 if(remainingTurns === 0  && !checkWinPlayer2){
-                    window.alert(`Its a draw! Start Again`)
+                    // window.alert(`Its a draw! Start Again`)
+                    $(".popupDraw").css("display","flex");
                 }
             }
         }
@@ -123,13 +125,16 @@ $(document).ready(function(){
                 if(playerTurn === 0){
                     const score = parseInt($(`#player1`).text());
                     const newScore = $(`#player1`).text(score+1);
-
-                    window.alert(`Player 1 Won! Congrats!`)
+                    $("#messageWin").html("CONGRATS! PLAYER 1 WON!");
+                    $(".popupWin").css("display","flex");
+                    // window.alert(`Player 1 Won! Congrats!`)
                     
                 } else if(playerTurn === 1){
                     const score = parseInt($(`#player2`).text());
                     const newScore = $(`#player2`).text(score+1);
-                    window.alert(`Player 2 Won! Congrats!`)
+                    $("#messageWin").html("CONGRATS! PLAYER 2 WON!");
+                    $(".popupWin").css("display","flex");
+                    // window.alert(`Player 2 Won! Congrats!`);
                     
                 } // logs the score for the winning player
                 gameOver = true;
@@ -141,20 +146,25 @@ $(document).ready(function(){
 
     };// checkWinningConditions()
 
-    const resetBoard = $("#resetBoard").on('click',function(){
+    const resetBoard = $(".resetBoard").on('click',function(){
+        console.log(`button clicked`)
         playerTurn = 0;
         remainingTurns =9;
         arrayPlayer1 = [];
         arrayPlayer2 = [];
         gameOver=false;
+        $(".cell").html("");
         $(".cell").css({
             "background":"none",
             "background-color":"rgb(11, 209, 209)",
         });
+        $(".popupWin").css("display","none");
+
         
     });// resetGame()
 
     const resetScore = $("#resetScore").on('click', function(){
+        console.log(`reset score button clicked`);
         $(".score").html("0");
         gameOver=true;
         playerTurn = 0;
@@ -181,10 +191,9 @@ $(document).ready(function(){
 
     });//resetScore()
 
+   
 
 
-
-    
 
 });//$document.ready()
 
