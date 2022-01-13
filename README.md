@@ -6,13 +6,13 @@ A **SuperMario** themed Tic Tac Toe.
 [This is a link to my live site](https://azhang93.github.io/tic-tac-toe/?fbclid=IwAR019QX2QN2GVKgiOYhSLdG00LA_Fz00SV6KxQ0LXjlYZK5NDEu1lOFGedo)
 
 **HOW TO PLAY**
-Before starting the game, players first have to choose their characters from the selection of cat gifs.
+Before starting the game, players first have to choose their characters.
 Once selected, the game will start and a pop up message will show up for every draw, win situations. 
 The pop-up message will propmt users to restart the board to continue the game. The reset board button will only clear the grid but will keep count of the winning scores.
 
 If players wants to start the game from the beggining, they can reset the whole game and once again pick their characters.
 
-Added bonus, you can change the background to your liking!
+Added bonus, you can change the background to your liking! and an audio player for Mario's classic soundtrack.
 
 Tech used in this project:
 - HTML, CSS, JS , Jquery

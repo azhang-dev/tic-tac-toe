@@ -2,9 +2,9 @@ $(document).ready(function(){
    
     console.log(`DOM loaded!`);
    
-    let gameOver = true;
-    let playerTurn = 0;
-    let remainingTurns = 9;
+    let gameOver = true;// 
+    let playerTurn = 0;// alternate between player 1 & 2
+    let remainingTurns = 9;// helps determine a draw situation
     let arrayPlayer1 = []; // cellId clicked will saved into this array
     let arrayPlayer2 = []; // cellId clicked will saved into this array
 
@@ -14,7 +14,7 @@ $(document).ready(function(){
 
     const $selectionText = $('.characterSelectionText'); // this text will change during selection of characters
 
-    const winningConditions = [
+    const winningConditions = [ // arrays of winning combinations
         [0,1,2],
         [3,4,5],
         [6,7,8],
@@ -25,7 +25,7 @@ $(document).ready(function(){
         [0,4,8],
     ];
 
-    
+
 
     const $playerSelection= $(".playerSelection").on("click",function(){
         const playerCharacter = $(this).attr("src"); // directly acessing the img content
@@ -48,7 +48,7 @@ $(document).ready(function(){
 
     });//$playerSelection
 
-    const $playGame = $('.cell').on('click',function(){
+    const $playGame = $('.cell').on('click',function(){//player's clicked cell's index will determine winning move
         
         const cellId = parseInt($(this).attr("id"));// get the id num of the 
         // if statement check if the clicked cell is already occupied
@@ -105,7 +105,7 @@ $(document).ready(function(){
         }
     });//$playGame()
 
-    const checkWinningConditions = function(playerMoves){//for each player turn, this function will run.
+    const checkWinningConditions = function(playerMoves){//for each player's turn, this function will run-->Looping between each winning index within another loop of the winning array combination
         
         for(let i = 0; i < winningConditions.length; i++){// will loop each winning combinations array
             
