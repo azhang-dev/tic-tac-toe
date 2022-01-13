@@ -6,42 +6,50 @@
     	<meta name="description" content="">
     	<meta name="keywords" content="">
 	
-		<title>Tic-Tac-Toe Project</title>
-	
+		<title>Tic-Tac-Toe</title>
+     
 		<link rel="stylesheet" href="css/style.css">
 		<script src="js/jquery.js"></script>
   		<script src="js/main.js"></script>
+        <script src="js/styling.js"></script>
 </head>
 
 <body>
-
-<header>
-    <h1>TIC TAC TOE PROJECT</h1>
-</header>
-
-<div class= "game-container"> 
-    <div class= "cell" id= "0"></div>
-    <div class= "cell" id= "1"></div>
-    <div class= "cell" id= "2"></div>
-    <div class= "cell" id= "3"></div>
-    <div class= "cell" id= "4"></div>
-    <div class= "cell" id= "5"></div>
-    <div class= "cell" id= "6"></div>
-    <div class= "cell" id= "7"></div>
-    <div class= "cell" id= "8"></div>
+<div class=backgroundGallery>
+    <img src="css/images/cats/Neko-Atsume-cats-900x506.jpeg" class=backgroundImg id=bg1 alt= "background 1">
+    <img src="css/images/cats/216-2168722_cute-cat-cartoon-wallpaper.png" class=backgroundImg style="display:none" id=bg2 alt= "background 1">
 </div>
 
-<h3>Player's score</h3>
-<div class= "gamescore-container">
-    <p>Player 1</p>
-    <div  class= "score" id="player1">0</div>
-    <p>Player 2</p>
-    <div  class= "score" id="player2">0</div>
+<div class="content">
+
+    <header>
+        <h1>TIC TAC TOE PROJECT</h1>
+    </header>
+
+    <div class= "game-container"> 
+        <div class= "cell" id= "0"></div>
+        <div class= "cell" id= "1"></div>
+        <div class= "cell" id= "2"></div>
+        <div class= "cell" id= "3"></div>
+        <div class= "cell" id= "4"></div>
+        <div class= "cell" id= "5"></div>
+        <div class= "cell" id= "6"></div>
+        <div class= "cell" id= "7"></div>
+        <div class= "cell" id= "8"></div>
+    </div>
+
+    <h3>Player's score</h3>
+    <div class= "gamescore-container">
+        <p>Player 1</p>
+        <div  class= "score" id="player1">0</div>
+        <p>Player 2</p>
+        <div  class= "score" id="player2">0</div>
+    </div>
+    <br>
+    <button id="resetBoard">Reset Board</button>
+    <button id="resetScore">Reset Score</button>
+    <button id="toggleBackground">Background</button>
+   
 </div>
-<br>
-
-
-<button id="resetGame">Reset Game</button>
-<button id="resetScore">Reset Score</button>
 </body>
 </html>

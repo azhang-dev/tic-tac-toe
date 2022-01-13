@@ -3,7 +3,7 @@ $(document).ready(function(){
     console.log(`DOM loaded!`);
    
     let playerTurn = 0;
-    let remainingTurns =9;
+    let remainingTurns = 9;
     let arrayPlayer1 = []; // cellId clicked will saved into this array
     let arrayPlayer2 = []; // cellId clicked will saved into this array
     let gameOver = false;
@@ -104,7 +104,7 @@ $(document).ready(function(){
 
     };// checkWinningConditions()
 
-    const resetGame = $("#resetGame").on('click',function(){
+    const resetBoard = $("#resetBoard").on('click',function(){
         playerTurn = 0;
         remainingTurns =9;
         let emptyCell = $(".cell").html("");
@@ -117,7 +117,17 @@ $(document).ready(function(){
         
     });// resetGame()
 
-    
+    const resetScore = $("#resetScore").on('click', function(){
+        $(".score").html("0");
+        
+        playerTurn = 0;
+        remainingTurns =9;
+       $(".cell").html("");
+        arrayPlayer1 = [];
+        arrayPlayer2 = [];
+        gameOver=false;
+
+    });//resetScore()
 
 });//$document.ready()
 

@@ -67,10 +67,10 @@ $(document).ready(function(){
 
     };// checkWinningConditions()
     
-    const endGame = function (){
+    // const endGame = function (){
 
 
-    }
+    // }
 
 
 
