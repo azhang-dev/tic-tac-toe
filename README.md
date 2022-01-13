@@ -1,6 +1,6 @@
 # TIC TAC TOE - GA Project 1
 
-![](screenshots/Screen Shot_1.png)
+![](screenshots/ScreenShot_1.png)
 
 A **SuperMario** themed Tic Tac Toe. 
 [This is a link to my live site](https://azhang93.github.io/tic-tac-toe/?fbclid=IwAR019QX2QN2GVKgiOYhSLdG00LA_Fz00SV6KxQ0LXjlYZK5NDEu1lOFGedo)
@@ -39,10 +39,10 @@ Experience with project:
 
 More Images:
 
-![background change](screenshots/Screen Shot_2.png)
+![background change](screenshots/ScreenShot_2.png)
 
-![popup message](screenshots/Screen Shot_5.png)
+![popup message](screenshots/ScreenShot_5.png)
 
-![popup message](screenshots/Screen Shot_5.png)
+![popup message](screenshots/ScreenShot_5.png)
 
-![Media query](screenshots/Screen Shot_6.png)
+![Media query](screenshots/ScreenShot_6.png)
