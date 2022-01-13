@@ -13,6 +13,18 @@ $(document).ready(function(){
     let characterSelectionCount = 0;// will affect players turn to select 
 
     const $selectionText = $('.characterSelectionText'); // this text will change during selection of characters
+
+    const winningConditions = [
+        [0,1,2],
+        [3,4,5],
+        [6,7,8],
+        [0,3,6],
+        [1,4,7], 
+        [2,5,8],
+        [2,4,6],
+        [0,4,8],
+    ];
+
     
 
     const $playerSelection= $(".playerSelection").on("click",function(){
@@ -30,7 +42,7 @@ $(document).ready(function(){
         }else{
             player2Character = playerCharacter;
             $(".playerSelection").css("display","none");//hides the selection of characters, so players can no longer choose
-            $selectionText.html("LET THE GAMES BEGIN !!");
+            $selectionText.html("LET THE GAMES BEGIN");
             gameOver = false; // now allows the game to start (cell clicking)
         }
 
@@ -92,17 +104,6 @@ $(document).ready(function(){
             }
         }
     });//$playGame()
-
-    const winningConditions = [
-        [0,1,2],
-        [3,4,5],
-        [6,7,8],
-        [0,3,6],
-        [1,4,7], 
-        [2,5,8],
-        [2,4,6],
-        [0,4,8],
-    ];
 
     const checkWinningConditions = function(playerMoves){//for each player turn, this function will run.
         
@@ -191,8 +192,6 @@ $(document).ready(function(){
         $(".backgroundImg").toggle();
         console.log(`background button clicked`);
     });// #togglebackground
-
-
 
 });//$document.ready()
 
