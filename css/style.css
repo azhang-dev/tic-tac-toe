@@ -31,11 +31,9 @@ body{
     resize: both;
 }
 
-h1{
+.title{
     font-size: 100px;
     margin: 20px 0px 5px 0px;
-    -moz-text-fill-color: rgb(0, 248, 227);
-    -webkit-text-fill-color: rgb(0, 248, 227);
     -moz-text-stroke-color: black;
     -webkit-text-stroke-color: black;
     -moz-text-stroke-width: 5px;  
@@ -242,12 +240,10 @@ button:hover{
 
 @media only screen and (max-width:800px){
 
-    h1{
+    .title{
         
         font-size: 60px;
         margin: 20px 0px 5px 0px;
-        -moz-text-fill-color: rgb(0, 248, 227);
-        -webkit-text-fill-color: rgb(0, 248, 227);
         -moz-text-stroke-color: black;
         -webkit-text-stroke-color: black;
         -moz-text-stroke-width: 1px;  
