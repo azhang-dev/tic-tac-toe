@@ -6,7 +6,46 @@ $(document).ready(function(){
     let remainingTurns = 9;
     let arrayPlayer1 = []; // cellId clicked will saved into this array
     let arrayPlayer2 = []; // cellId clicked will saved into this array
-    let gameOver = false;
+    let gameStart = false;
+    let gameOver = true;
+    let player1Character = "";
+    let player2Character = "";
+
+
+    const $playerSelection = $(".playerSelection").html("id");
+    console.log(`player selection:`,$playerSelection);
+    const selectionText = $('.characterSelectionText');
+    let characterSelectionCount = 0;
+    console.log(`selection text:`,selectionText.html());
+
+    $playerSelection.on("click",function(){
+        
+        // const playerCharacter = $(this).attr("id");
+        const playerCharacter = $(this).attr("src");
+        console.log(`player:`,playerCharacter);
+
+        if(characterSelectionCount === 0){
+            player1Character = playerCharacter;
+            characterSelectionCount ++
+            selectionText.html("Player 2: Choose your character!");
+            // if(playerCharacter === $(this).attr("#character1")){
+            //     $(this).css('background-color','red');
+            // } 
+
+        }else{
+            player2Character = playerCharacter;
+            $(".playerSelection").css("display","none")
+            selectionText.html("LET THE GAMES BEGIN!!");
+            gameOver = false;
+            //hide selection button or non clickable
+        }
+
+        
+
+    });//$playerSelection.on click --> will probably have to wrap the entire game?(resets)
+
+    
+  
 
     const playGame = $('.cell').on('click',function(){
 
@@ -21,10 +60,15 @@ $(document).ready(function(){
             }
 
             if(playerTurn === 0 ){
+                //input characterSelection
                 const checkWinPlayer1 =checkWinningConditions(arrayPlayer1)
                 console.log(`checkwin for player 1`,checkWinPlayer1);
-                $(this).html("O");
+                //$(this).html(player1Character);
+                $(this).css("background",`url(${player1Character})`);
+                $(this).css("background-size","contain");
+
                 $(this).css('color','rgb(5, 128, 128)');
+                
                 arrayPlayer1.push(cellId);// adds and stores the index cell into the player's array
                 remainingTurns--;
                 checkWinningConditions(arrayPlayer1);// first checks winning index
@@ -38,7 +82,9 @@ $(document).ready(function(){
             }else{
                 const checkWinPlayer2 =checkWinningConditions(arrayPlayer2)
                 console.log(`checkwin for player 2`,checkWinPlayer2);
-                $(this).html("X");
+                // $(this).html(player2Character);//-->if attr.("id")
+                $(this).css("background",`url(${player2Character})`);
+                $(this).css("background-size","contain");
                 $(this).css('color','rgb(5, 128, 128)');
                 $(this).css('background-color','red')// change cell color
                 arrayPlayer2.push(cellId);
@@ -129,6 +175,11 @@ $(document).ready(function(){
         gameOver=false;
 
     });//resetScore()
+
+
+
+
+    
 
 });//$document.ready()
 

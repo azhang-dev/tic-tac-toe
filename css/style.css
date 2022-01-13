@@ -18,7 +18,7 @@ body{
     z-index: -1;
 }
 
-title{
+header{
     
     margin: 100px auto;
 }
@@ -55,7 +55,9 @@ title{
 }
 
 
-
+.characterSelectionText{
+    font-size: 50px;
+}
 
 
 .gamescore-container{

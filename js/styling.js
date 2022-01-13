@@ -6,8 +6,4 @@ $(document).ready(function(){
         console.log(`background button clicked`);
     });// #togglebackground
 
-
-
-
-
 });//document.ready
