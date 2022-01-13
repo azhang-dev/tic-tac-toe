@@ -20,9 +20,10 @@ Tech used in this project:
 
 Wishlist:
 - cell's color change according to different character selection
+- sound effects while hovering character selection
 - AI player option
 - Custom Grid options
-- option to toggle through another themed TIC-TAC-TOE
+
 
 List of bugs:
 - May encounter a draw message after win message of a diagonal win: on a last remaining corner cell of the grid.
@@ -40,8 +41,8 @@ More Images:
 
 ![background change](screenshots/Screen Shot_2.png)
 
-![popup message](screenshots/Screen Shot_3.png)
+![popup message](screenshots/Screen Shot_5.png)
 
-![popup message](screenshots/Screen Shot_4.png)
+![popup message](screenshots/Screen Shot_5.png)
 
-![Media query](screenshots/Screen Shot_5.png)
+![Media query](screenshots/Screen Shot_6.png)
