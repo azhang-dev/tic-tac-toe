@@ -41,7 +41,7 @@ More Images:
 
 ![background change](screenshots/ScreenShot_2.png)
 
-![popup message](screenshots/ScreenShot_5.png)
+![popup message](screenshots/ScreenShot_4.png)
 
 ![popup message](screenshots/ScreenShot_5.png)
 
