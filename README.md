@@ -11,10 +11,12 @@ The score board will keep count on the wins and can be cleared by pressing the _
 wishlist:
 - toggle multiple backgrounds
 - add background music
+- AI player
 
 
 
-This is a [link to my live site](https://azhang93.github.io/tic-tac-toe/?fbclid=IwAR019QX2QN2GVKgiOYhSLdG00LA_Fz00SV6KxQ0LXjlYZK5NDEu1lOFGedo)
+
+[This is a link to my live site](https://azhang93.github.io/tic-tac-toe/?fbclid=IwAR019QX2QN2GVKgiOYhSLdG00LA_Fz00SV6KxQ0LXjlYZK5NDEu1lOFGedo)
 
 And to images:
 

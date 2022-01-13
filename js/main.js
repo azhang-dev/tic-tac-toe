@@ -6,7 +6,6 @@ $(document).ready(function(){
     let remainingTurns = 9;
     let arrayPlayer1 = []; // cellId clicked will saved into this array
     let arrayPlayer2 = []; // cellId clicked will saved into this array
-    let gameStart = false;
     let gameOver = true;
     let player1Character = "";
     let player2Character = "";
@@ -34,7 +33,7 @@ $(document).ready(function(){
 
         }else{
             player2Character = playerCharacter;
-            $(".playerSelection").css("display","none")
+            $(".playerSelection").css("display","none");
             selectionText.html("LET THE GAMES BEGIN!!");
             gameOver = false;
             //hide selection button or non clickable
@@ -155,24 +154,32 @@ $(document).ready(function(){
     const resetBoard = $("#resetBoard").on('click',function(){
         playerTurn = 0;
         remainingTurns =9;
-        let emptyCell = $(".cell").html("");
-        emptyCell.css('background-color','rgb(11, 209, 209)');
+        $(".cell").css({"background":"none"});
+        $(".cell").css("background-color","rgb(11, 209, 209)");
         arrayPlayer1 = [];
         arrayPlayer2 = [];
-        gameOver=false;
+        gameOver=true;
         console.log(`Reset button clicked`);
         
     });// resetGame()
 
     const resetScore = $("#resetScore").on('click', function(){
         $(".score").html("0");
-        
+        gameOver=true;
         playerTurn = 0;
         remainingTurns =9;
-       $(".cell").html("");
+        $(".cell").css({"background":"none"});
+        $(".cell").css("background-color","rgb(11, 209, 209)");
+        // $(".cell").css("background","none");
         arrayPlayer1 = [];
         arrayPlayer2 = [];
-        gameOver=false;
+        characterSelectionCount = 0;
+        player1Character = "";
+        player2Character = "";
+        $(".playerSelection").css("display","inline");
+        selectionText.html("Player 1: Choose your character");
+
+        
 
     });//resetScore()
 
