@@ -12,7 +12,7 @@ $(document).ready(function(){
     let player2Character = "";//stores player2's choice of characters
     let characterSelectionCount = 0;// will affect players turn to select 
 
-    const $selectionText = $('.characterSelectionText'); // this text will change during selection of characters
+   const $selectionText = $('.characterSelectionText'); // this text will change during selection of characters
 
     const winningConditions = [ // arrays of winning combinations
         [0,1,2],
